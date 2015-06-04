@@ -18,7 +18,8 @@ public enum ErrorCode implements org.apache.thrift.TEnum {
   InvalidType(4),
   NotPermitted(5),
   SqlError(6),
-  Error(7);
+  ConsensusTimeout(7),
+  Error(100);
 
   private final int value;
 
@@ -52,6 +53,8 @@ public enum ErrorCode implements org.apache.thrift.TEnum {
       case 6:
         return SqlError;
       case 7:
+        return ConsensusTimeout;
+      case 100:
         return Error;
       default:
         return null;

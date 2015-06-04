@@ -30,18 +30,19 @@ import java.util.BitSet;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 import javax.annotation.Generated;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @SuppressWarnings({"cast", "rawtypes", "serial", "unchecked"})
 public class Result extends org.apache.thrift.TUnion<Result, Result._Fields> {
   private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("Result");
-  private static final org.apache.thrift.protocol.TField READ_RESULT_FIELD_DESC = new org.apache.thrift.protocol.TField("read_result", org.apache.thrift.protocol.TType.STRUCT, (short)1);
-  private static final org.apache.thrift.protocol.TField WRITE_RESULT_FIELD_DESC = new org.apache.thrift.protocol.TField("write_result", org.apache.thrift.protocol.TType.STRUCT, (short)2);
+  private static final org.apache.thrift.protocol.TField RD_RES_FIELD_DESC = new org.apache.thrift.protocol.TField("rdRes", org.apache.thrift.protocol.TType.STRUCT, (short)1);
+  private static final org.apache.thrift.protocol.TField WR_RES_FIELD_DESC = new org.apache.thrift.protocol.TField("wrRes", org.apache.thrift.protocol.TType.STRUCT, (short)2);
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-    READ_RESULT((short)1, "read_result"),
-    WRITE_RESULT((short)2, "write_result");
+    RD_RES((short)1, "rdRes"),
+    WR_RES((short)2, "wrRes");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -56,10 +57,10 @@ public class Result extends org.apache.thrift.TUnion<Result, Result._Fields> {
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 1: // READ_RESULT
-          return READ_RESULT;
-        case 2: // WRITE_RESULT
-          return WRITE_RESULT;
+        case 1: // RD_RES
+          return RD_RES;
+        case 2: // WR_RES
+          return WR_RES;
         default:
           return null;
       }
@@ -102,9 +103,9 @@ public class Result extends org.apache.thrift.TUnion<Result, Result._Fields> {
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.READ_RESULT, new org.apache.thrift.meta_data.FieldMetaData("read_result", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.RD_RES, new org.apache.thrift.meta_data.FieldMetaData("rdRes", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, ReadResult.class)));
-    tmpMap.put(_Fields.WRITE_RESULT, new org.apache.thrift.meta_data.FieldMetaData("write_result", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.WR_RES, new org.apache.thrift.meta_data.FieldMetaData("wrRes", org.apache.thrift.TFieldRequirementType.DEFAULT, 
         new org.apache.thrift.meta_data.StructMetaData(org.apache.thrift.protocol.TType.STRUCT, WriteResult.class)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
     org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(Result.class, metaDataMap);
@@ -125,15 +126,15 @@ public class Result extends org.apache.thrift.TUnion<Result, Result._Fields> {
     return new Result(this);
   }
 
-  public static Result read_result(ReadResult value) {
+  public static Result rdRes(ReadResult value) {
     Result x = new Result();
-    x.setRead_result(value);
+    x.setRdRes(value);
     return x;
   }
 
-  public static Result write_result(WriteResult value) {
+  public static Result wrRes(WriteResult value) {
     Result x = new Result();
-    x.setWrite_result(value);
+    x.setWrRes(value);
     return x;
   }
 
@@ -141,16 +142,16 @@ public class Result extends org.apache.thrift.TUnion<Result, Result._Fields> {
   @Override
   protected void checkType(_Fields setField, Object value) throws ClassCastException {
     switch (setField) {
-      case READ_RESULT:
+      case RD_RES:
         if (value instanceof ReadResult) {
           break;
         }
-        throw new ClassCastException("Was expecting value of type ReadResult for field 'read_result', but got " + value.getClass().getSimpleName());
-      case WRITE_RESULT:
+        throw new ClassCastException("Was expecting value of type ReadResult for field 'rdRes', but got " + value.getClass().getSimpleName());
+      case WR_RES:
         if (value instanceof WriteResult) {
           break;
         }
-        throw new ClassCastException("Was expecting value of type WriteResult for field 'write_result', but got " + value.getClass().getSimpleName());
+        throw new ClassCastException("Was expecting value of type WriteResult for field 'wrRes', but got " + value.getClass().getSimpleName());
       default:
         throw new IllegalArgumentException("Unknown field id " + setField);
     }
@@ -161,22 +162,22 @@ public class Result extends org.apache.thrift.TUnion<Result, Result._Fields> {
     _Fields setField = _Fields.findByThriftId(field.id);
     if (setField != null) {
       switch (setField) {
-        case READ_RESULT:
-          if (field.type == READ_RESULT_FIELD_DESC.type) {
-            ReadResult read_result;
-            read_result = new ReadResult();
-            read_result.read(iprot);
-            return read_result;
+        case RD_RES:
+          if (field.type == RD_RES_FIELD_DESC.type) {
+            ReadResult rdRes;
+            rdRes = new ReadResult();
+            rdRes.read(iprot);
+            return rdRes;
           } else {
             org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
             return null;
           }
-        case WRITE_RESULT:
-          if (field.type == WRITE_RESULT_FIELD_DESC.type) {
-            WriteResult write_result;
-            write_result = new WriteResult();
-            write_result.read(iprot);
-            return write_result;
+        case WR_RES:
+          if (field.type == WR_RES_FIELD_DESC.type) {
+            WriteResult wrRes;
+            wrRes = new WriteResult();
+            wrRes.read(iprot);
+            return wrRes;
           } else {
             org.apache.thrift.protocol.TProtocolUtil.skip(iprot, field.type);
             return null;
@@ -193,13 +194,13 @@ public class Result extends org.apache.thrift.TUnion<Result, Result._Fields> {
   @Override
   protected void standardSchemeWriteValue(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
     switch (setField_) {
-      case READ_RESULT:
-        ReadResult read_result = (ReadResult)value_;
-        read_result.write(oprot);
+      case RD_RES:
+        ReadResult rdRes = (ReadResult)value_;
+        rdRes.write(oprot);
         return;
-      case WRITE_RESULT:
-        WriteResult write_result = (WriteResult)value_;
-        write_result.write(oprot);
+      case WR_RES:
+        WriteResult wrRes = (WriteResult)value_;
+        wrRes.write(oprot);
         return;
       default:
         throw new IllegalStateException("Cannot write union with unknown field " + setField_);
@@ -211,16 +212,16 @@ public class Result extends org.apache.thrift.TUnion<Result, Result._Fields> {
     _Fields setField = _Fields.findByThriftId(fieldID);
     if (setField != null) {
       switch (setField) {
-        case READ_RESULT:
-          ReadResult read_result;
-          read_result = new ReadResult();
-          read_result.read(iprot);
-          return read_result;
-        case WRITE_RESULT:
-          WriteResult write_result;
-          write_result = new WriteResult();
-          write_result.read(iprot);
-          return write_result;
+        case RD_RES:
+          ReadResult rdRes;
+          rdRes = new ReadResult();
+          rdRes.read(iprot);
+          return rdRes;
+        case WR_RES:
+          WriteResult wrRes;
+          wrRes = new WriteResult();
+          wrRes.read(iprot);
+          return wrRes;
         default:
           throw new IllegalStateException("setField wasn't null, but didn't match any of the case statements!");
       }
@@ -232,13 +233,13 @@ public class Result extends org.apache.thrift.TUnion<Result, Result._Fields> {
   @Override
   protected void tupleSchemeWriteValue(org.apache.thrift.protocol.TProtocol oprot) throws org.apache.thrift.TException {
     switch (setField_) {
-      case READ_RESULT:
-        ReadResult read_result = (ReadResult)value_;
-        read_result.write(oprot);
+      case RD_RES:
+        ReadResult rdRes = (ReadResult)value_;
+        rdRes.write(oprot);
         return;
-      case WRITE_RESULT:
-        WriteResult write_result = (WriteResult)value_;
-        write_result.write(oprot);
+      case WR_RES:
+        WriteResult wrRes = (WriteResult)value_;
+        wrRes.write(oprot);
         return;
       default:
         throw new IllegalStateException("Cannot write union with unknown field " + setField_);
@@ -248,10 +249,10 @@ public class Result extends org.apache.thrift.TUnion<Result, Result._Fields> {
   @Override
   protected org.apache.thrift.protocol.TField getFieldDesc(_Fields setField) {
     switch (setField) {
-      case READ_RESULT:
-        return READ_RESULT_FIELD_DESC;
-      case WRITE_RESULT:
-        return WRITE_RESULT_FIELD_DESC;
+      case RD_RES:
+        return RD_RES_FIELD_DESC;
+      case WR_RES:
+        return WR_RES_FIELD_DESC;
       default:
         throw new IllegalArgumentException("Unknown field id " + setField);
     }
@@ -272,41 +273,41 @@ public class Result extends org.apache.thrift.TUnion<Result, Result._Fields> {
   }
 
 
-  public ReadResult getRead_result() {
-    if (getSetField() == _Fields.READ_RESULT) {
+  public ReadResult getRdRes() {
+    if (getSetField() == _Fields.RD_RES) {
       return (ReadResult)getFieldValue();
     } else {
-      throw new RuntimeException("Cannot get field 'read_result' because union is currently set to " + getFieldDesc(getSetField()).name);
+      throw new RuntimeException("Cannot get field 'rdRes' because union is currently set to " + getFieldDesc(getSetField()).name);
     }
   }
 
-  public void setRead_result(ReadResult value) {
+  public void setRdRes(ReadResult value) {
     if (value == null) throw new NullPointerException();
-    setField_ = _Fields.READ_RESULT;
+    setField_ = _Fields.RD_RES;
     value_ = value;
   }
 
-  public WriteResult getWrite_result() {
-    if (getSetField() == _Fields.WRITE_RESULT) {
+  public WriteResult getWrRes() {
+    if (getSetField() == _Fields.WR_RES) {
       return (WriteResult)getFieldValue();
     } else {
-      throw new RuntimeException("Cannot get field 'write_result' because union is currently set to " + getFieldDesc(getSetField()).name);
+      throw new RuntimeException("Cannot get field 'wrRes' because union is currently set to " + getFieldDesc(getSetField()).name);
     }
   }
 
-  public void setWrite_result(WriteResult value) {
+  public void setWrRes(WriteResult value) {
     if (value == null) throw new NullPointerException();
-    setField_ = _Fields.WRITE_RESULT;
+    setField_ = _Fields.WR_RES;
     value_ = value;
   }
 
-  public boolean isSetRead_result() {
-    return setField_ == _Fields.READ_RESULT;
+  public boolean isSetRdRes() {
+    return setField_ == _Fields.RD_RES;
   }
 
 
-  public boolean isSetWrite_result() {
-    return setField_ == _Fields.WRITE_RESULT;
+  public boolean isSetWrRes() {
+    return setField_ == _Fields.WR_RES;
   }
 
 

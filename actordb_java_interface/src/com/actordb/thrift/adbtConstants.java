@@ -30,11 +30,12 @@ import java.util.BitSet;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
 import javax.annotation.Generated;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @SuppressWarnings({"cast", "rawtypes", "serial", "unchecked"})
 public class adbtConstants {
 
-  public static final String VERSION = "1.0.0";
+  public static final String VERSION = "1.0.1";
 
 }
