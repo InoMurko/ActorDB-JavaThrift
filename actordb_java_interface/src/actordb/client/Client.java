@@ -11,6 +11,8 @@ import org.apache.thrift.transport.TSocket;
 import org.apache.thrift.transport.TTransport;
 
 import com.actordb.thrift.Actordb;
+import com.actordb.thrift.Group;
+import com.actordb.thrift.Server;
 import com.actordb.thrift.Val;
 
 public class Client {
@@ -23,7 +25,7 @@ public class Client {
 	 * 
 	 * */
 	public static final String domain = "localhost";
-	public static final int port = 44445; //default is 33306;
+	public static final int port = 33306; //default is 33306;
 	public static final String name_thrift = "ino.murko@biokoda.com_thrift";
 	public static final String logger = "ino.murko@o.com";
 	public static final String username = "";
@@ -31,11 +33,46 @@ public class Client {
 
 	public static void main(String[] args) {
 
+		init();
+		
 		readAll();
 		
 		insertOne();
+		
+		
 	}
 
+	public static void init(){
+		TTransport transport;
+		transport = new TSocket(domain, port);
+		try {
+			transport.open();
+			TProtocol protocol = new TBinaryProtocol(transport);
+			Actordb.Client client = new Actordb.Client(protocol);
+			client.login("", "");
+			Server servers = new Server();
+			servers.addToServers("testnd@127.0.0.1:44381");
+			List<Group> groups = new ArrayList<Group>();
+			Group group = new Group();
+			group.name = "grp1";
+			group.nodes = new ArrayList<String>();
+			group.nodes.add("testnd");
+			group.type = "cluster";
+			groups.add(group);
+			servers.groups = groups;
+			
+			
+			String result = client.initialize(servers);
+			
+			System.out.println(result);
+		} catch (TException x) {
+			
+			x.printStackTrace();
+			
+		} finally {
+			transport.close();
+		}
+	}
 	public static void readAll() {
 		TTransport transport;
 		transport = new TSocket(domain, port);
